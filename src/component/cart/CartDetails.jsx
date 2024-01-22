@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react"
+import { toast } from 'react-toastify'
 import checkout from '../../assets/icons/checkout.svg'
 import { MovieContext } from "../../context"
 import { getImageUrl } from "../../utils/utils"
@@ -15,6 +16,7 @@ export default function CartDetails({ onClose }) {
             type: "REMOVE_FROM_CART",
             payload: item
         })
+        toast.success(`${item.title} has been removed`)
     }
 
     return (
@@ -33,7 +35,7 @@ export default function CartDetails({ onClose }) {
                     >
                         {
                             state.cartData.length === 0 ? <>
-                                <p className="text-2xl text-black"> The Cart is empty </p>
+                                <p className="text-2xl"> The Cart is empty </p>
                             </> :
                                 (
                                     state.cartData.map(item => (

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState } from 'react'
+import { toast } from 'react-toastify'
 import { MovieContext } from '../../context'
 import { getImageUrl } from '../../utils/utils'
 import MovieDetailsModal from './MovieDetailsModal'
@@ -34,8 +35,9 @@ export default function MovieCard({ movie }) {
                     ...movie
                 }
             })
+            toast.success(`${movie.title} added to your cart`)
         } else {
-            alert(`${movie.title} already added to your cart`)
+            toast.error(`${movie.title} already added to your cart`)
         }
 
     }
